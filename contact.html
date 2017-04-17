@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+header, footer {
+    padding: 1em;
+    color: blue;
+    background-color: white;
+    clear: left;
+    text-align: center;
+}
+
+body {
+	background-color: white;
+	color:black;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #a4e6ff;
+}
+
+li {
+	float:left;
+}
+	
+li a {
+	display:block;
+	color:white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover{
+	background-color: #92dffd;
+}
+
+</style>
+</head>
+<body>
+
+<ul>
+	<li><a href="index.html">Home</a></li>
+	<li><a href="service.html">Service</a></li>
+	<li><a href="about.html">About</a></li>
+	<li><a href="news.html">News</a></li> 
+	<li><a class="active" href="contact.html">Contact</a></li>
+	<li><a href="login">Log In</a><li>
+</ul>
+
+<?php
+$action=$_REQUEST['action'];
+if ($action=="")    /* display the contact form */
+    {
+    ?>
+    <form  action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="action" value="submit">
+    Your name:<br>
+    <input name="name" type="text" value="" size="30"/><br>
+    Your email:<br>
+    <input name="email" type="text" value="" size="30"/><br>
+    Your message:<br>
+    <textarea name="message" rows="7" cols="30"></textarea><br>
+    <input type="submit" value="Send email"/>
+    </form>
+    <?php
+    } 
+else                /* send the submitted data */
+    {
+    $name=$_REQUEST['name'];
+    $email=$_REQUEST['email'];
+    $message=$_REQUEST['message'];
+    if (($name=="")||($email=="")||($message==""))
+        {
+        echo "All fields are required, please fill <a href=\"\">the form</a> again.";
+        }
+    else{        
+        $from="From: $name<$email>\r\nReturn-path: $email";
+        $subject="Message sent using your contact form";
+        mail("sessery12@ubishops.ca", $subject, $message, $from);
+        echo "Email sent!";
+        }
+    }  
+?>
+					

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+header, footer {
+    padding: 1em;
+    color: blue;
+    background-color: white;
+    clear: left;
+    text-align: center;
+}
+
+body {
+	background-color: black;
+	color:white;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #a4e6ff;
+}
+
+li {
+	float:left;
+}
+	
+li a {
+	display:block;
+	color:white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover{
+	background-color: #92dffd;
+}
+
+</style>
+</head>
+<body>
+
+<ul>
+	<li><a href="index.html">Home</a></li>
+	<li><a href="service.html">Service</a></li>
+	<li><a href="about.html">About</a></li>
+	<li><a class="active" href="news.html">News</a></li> 
+	<li><a href="contact.html">Contact</a></li>
+	<li><a href="login">Log In</a><li>
+</ul>
+
+<header>
+	<h1> News </h1>
+</header>
+
+	<p>Welcome to our News page. This is where we will post everything thats going on with the service, as well as ask our 
+	communicate with our users, to see which services and locations they want added. This will also act as a blog for communication
+	between development, management, and users.</p>
+	
+<header>
+	<h2> Expansion Poll </h2>
+<header>
+<form name="myform" action="result_page.php" onsubmit="return validateForm()">
+	First Name:<br>
+	<input type="text" name="firstname">
+	<br>
+	Last Name:<br>
+	<input type="text" name="lastname">
+	<br>
+	Current Location:<br>
+	<input type="text" name="location">
+	<br>
+	Do you use the service?<br>
+	<input type="radio" name="service" value="Yes" checked> Yes <br>
+	<input type="radio" name="service" value="No"> No <br>
+	Where should we expand next? <br>
+	<select name="expansion">
+		<option value="UBC">UBC</option>
+		<option value="Dalhousie">Dalhousie</option>
+		<option value="Waterloo">Waterloo</option>
+		<option value="Queens">Queens</option>
+	</select>
+	<br>
+	Date:<br>
+	<input type="date" name="date">
+	<br><br>
+	<input type="submit" value="Submit">
+	<input type="reset" value="Reset">
+</form>
+
+<script type="text/javascript">
+    
+function validateForm(){
+    if (document.myform.firstname.value == "")
+        {
+            alert ("Please provide your name");
+            document.myform.firstname.focus();
+            return false;
+        }
+    if(document.myform.lastname.value == "")
+        {
+            alert("Please provide your last name");
+            document.myform.lastname.focus();
+            return false;
+        }
+    if(document.myform.location.value == "")
+        {
+            alert("Please provide location");
+            document.myform.location.focus();
+            return false;
+        }
+    if(document.myform.service == "-1")
+        {
+            alert("Please tell us if you subscribe to the service");
+            document.myform.location.focus();
+            return false;
+        }
+    if(document.myform.expansion.value == "-1")
+        {
+            alert("Please tell us where to expand next");
+            documents.myform.expansion.focus();
+            return false;
+        }
+    return (true);
+    }
+
+
+</script>
+    
+</body>
+</html>
